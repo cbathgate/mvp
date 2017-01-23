@@ -16,29 +16,22 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+## findMeFood ##
 
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+## for people who are too hangry to make decisions ##
 
-## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+## It's finally lunchtime, and you are trying to figure out where to go to get food. Honestly, you're so hungry that you can eat ANYWHERE, but there are so many options that you just find the whole choosing process overwhelming. This is where findMeFood can help. Just click the 'I'm Hungry' button, and findMeFood will point you to a random food establishment within 10 min walking distance that has above a four star rating! How easy! Don't like the suggestion? Just click the button again for another suggestion! Seriously, cannot get any simpler than that. ##
 
-## Problem ##
-  > Describe the problem your product solves.
+## People are sometimes too hungry and drained to make a decision for a place to eat ##
 
-## Solution ##
-  > Describe how your product elegantly solves the problem.
+## Finds a nearby food establishment for you that has a high rating ##
 
-## Quote from You ##
-  > A quote from a spokesperson in your company.
+## 'We are lucky to live in a world where you have so many options. However, sometimes we can get overwhelmed with the amount of choices, which causes unnecessary stress in our day for something as simple as finding a place to eat. findMeFood eliminates one more decision you have to make in a day so that you can focus on other more important things.' - Cynthia Bathgate, founder of findMeFood ##
 
-## How to Get Started ##
-  > Describe how easy it is to get started.
+## findMeFood is seriously the easiest app out there. Visit the link, and then simply click the 'I'm Hungry' button. Within seconds, the app will show you a nearby food establishment. Don't like what you see? Simply click the button again for another result! ##
 
-## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+## 'I am probably the most indecisive person ever. I cannot tell you how much time I have wasted from my day scrolling through yelp trying to find somewhere to eat. Now, I just click a button! I have tried so many places nearby that I didn't even know existed!' - Sonya Boyden, architect at SOM ##
 
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+## 'What I love the most about this app is that it helps me find new places! I used to just go to one place everyday for lunch, but this app makes it easy for me to try something new everyday!' - Chris Mortensen, local artist ##
+
+## What are you waiting for? Check it out for yourself: (insert link here) ##
