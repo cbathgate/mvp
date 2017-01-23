@@ -1,0 +1,21 @@
+{
+  "name": "hrsf52-mvp",
+  "description": "",
+  "authors": [
+    "Cynthia Bathgate <c.bathgate1@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/cbathgate/hrsf52-mvp",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib"
+  ],
+  "dependencies": {
+    "angular": "~1.3.16",
+    "angular-route": "~1.3.16",
+    "angular-mocks": "~1.3.16"
+  }
+}
