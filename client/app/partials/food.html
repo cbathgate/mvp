@@ -6,6 +6,6 @@
   <div class='feeling'>Not feeling it?</div>
   <a href= '#/food' class='try' ng-click='clicked()'>Let's try something else</a>
   <div class='subtext'>Recent Results:</div>
-  <div class='subtext' ng-repeat='place in places'>{{place.name}}</div>
+  <div class='subtext' ng-repeat='place in places | orderBy:"-_id"'>{{place.name}}</div>
 </div>
 

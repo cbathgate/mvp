@@ -28,6 +28,7 @@ app.all("*", function (req, res, next) {
 console.log('i am getting to the routes in server.js');
 app.get('/api/places/', placeController.allPlaces);
 app.post('/api/places/', placeController.newPlace);
+app.delete('/api/places/', placeController.deletePlaces);
 
 //starting the server
 app.listen(3000, function () {

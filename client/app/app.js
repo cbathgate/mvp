@@ -64,6 +64,14 @@ angular.module('foodapp', ['ngRoute'])
 
   //factory for database functions
   .factory('place', function($http) {
+
+    var deleteAll = function() {
+      return $http({
+        method: 'DELETE',
+        url: '/api/places/'
+      });
+    }
+
     var addOne = function(place) {
       console.log('about to add a new entry from the factory')
       return $http({
@@ -95,12 +103,16 @@ angular.module('foodapp', ['ngRoute'])
 
     return {
       addOne: addOne,
-      getAll: getAll
+      getAll: getAll,
+      deleteAll: deleteAll
     }
   })
 
   //build all controllers here
-  .controller('welcomeCtrl', function($scope, yelper) {
+  .controller('welcomeCtrl', function($scope, yelper, place) {
+
+    place.deleteAll();
+
     $scope.clicked = function () {
       yelper.setLocation($scope.place);
     }
@@ -108,8 +120,14 @@ angular.module('foodapp', ['ngRoute'])
 
   .controller('foodCtrl', function($scope, yelper, $http, place) {
     var images = ['one', 'two', 'three', 'four', 'five', 'six'];
-    
     $scope.searching = 'Searching...';
+
+    var recents = function () {
+      console.log('this happend');
+      place.getAll().then(function(places) {
+        $scope.places = places;
+      });
+    };
 
     $scope.data = yelper.getYelpEntry().then(function(response) {
       $scope.searching = "Why don't you try this?";
@@ -121,6 +139,7 @@ angular.module('foodapp', ['ngRoute'])
       }
       place.addOne(newEntry)
       .then(function (){
+        recents();
         return; 
       })
     }, function errorCallback(response) {
@@ -132,17 +151,18 @@ angular.module('foodapp', ['ngRoute'])
         $scope.searching = "Why don't you try this?";
         $scope.data = response;
         $scope.image = images[Math.floor(Math.random() * images.length)];
-        return;
+        
+        var newEntry = {
+        name: $scope.data.name,
+        }
+        place.addOne(newEntry)
+        .then(function (){
+          recents();
+          return; 
+        })
       }, function errorCallback(response) {
         return response;
       });
     };
-    var recents = function () {
-      console.log('this happend');
-      place.getAll().then(function(places) {
-        $scope.places = places;
-      });
-    };
-    recents();
   });
 
