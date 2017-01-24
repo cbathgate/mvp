@@ -37,7 +37,8 @@ angular.module('foodapp', ['ngRoute'])
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       };
-      var url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurant+in+' + useLocation + '&key='+ GOOGLE_API_KEY
+      console.log(GOOGLE_API_KEY);
+      var url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurant+in+' + useLocation + '&radius=400&key='+ GOOGLE_API_KEY
       return $http({
         method: "GET",
         headers: headers,
@@ -71,11 +72,22 @@ angular.module('foodapp', ['ngRoute'])
     $scope.data = yelper.getYelpEntry().then(function(response) {
       $scope.searching = "Why don't you try this?";
       $scope.data = response;
+      console.log($scope.data);
       $scope.image = images[Math.floor(Math.random() * images.length)];
-      console.log($scope.image);
       return;
     }, function errorCallback(response) {
       return response;
     });
+    $scope.clicked = function () {
+      $scope.data = yelper.getYelpEntry().then(function(response) {
+        $scope.searching = "Why don't you try this?";
+        $scope.data = response;
+        console.log($scope.data);
+        $scope.image = images[Math.floor(Math.random() * images.length)];
+        return;
+      }, function errorCallback(response) {
+        return response;
+      });
+    };
   });
 

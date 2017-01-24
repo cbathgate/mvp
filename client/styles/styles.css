@@ -25,14 +25,22 @@ nav {
   padding: 10px 20px;
 }
 
-.subtext {
+
+.subtext, .feeling {
   font-family: 'Oswald', sans-serif;
   color: #919191;
   font-size: 26px;
   display: block;
   width: 100%;
   text-align: center;
+}
+
+.subtext {
   margin: 20px auto;
+}
+
+.feeling {
+  margin: 10px auto;
 }
 
 .selection {
@@ -45,7 +53,8 @@ nav {
   margin: 10px auto;
 }
 
-.button {
+
+.button, .try {
   font-family: 'Oswald', sans-serif;
   background-color: #9E0606;
   display: block;
@@ -54,10 +63,17 @@ nav {
   color: white;
   font-size: 24px;
   text-align: center;
-  margin: 40px auto;
   border: none;
   border-radius: 20px;
   text-decoration: none;
+}
+
+.button {
+  margin: 40px auto;
+}
+
+.try {
+  margin: 10px auto;
 }
 
 .place {
@@ -73,6 +89,6 @@ nav {
 img {
   display: block;
   margin: 0 auto;
-  width: 600px;
+  height: 300px;
   border-radius: 8px;
 }
