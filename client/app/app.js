@@ -28,7 +28,6 @@ angular.module('foodapp', ['ngRoute'])
     var setLocation = function(location) {
       useLocation = location.split(' ');
       useLocation = useLocation.join('+');
-      console.log('LOCATION SET TO THE FOLLOWING', useLocation);
       return;
     };
     var getYelpEntry = function() {
@@ -38,7 +37,7 @@ angular.module('foodapp', ['ngRoute'])
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       };
-      var url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=food+in+' + useLocation + '&key='+ GOOGLE_API_KEY
+      var url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurant+in+' + useLocation + '&key='+ GOOGLE_API_KEY
       return $http({
         method: "GET",
         headers: headers,
@@ -55,7 +54,7 @@ angular.module('foodapp', ['ngRoute'])
 
     return {
       setLocation: setLocation,
-      getYelpEntry: getYelpEntry
+      getYelpEntry: getYelpEntry,
     }
   })
 
@@ -67,8 +66,13 @@ angular.module('foodapp', ['ngRoute'])
   })
 
   .controller('foodCtrl', function($scope, yelper, $http) {
+    var images = ['one', 'two', 'three', 'four', 'five', 'six'];
+    $scope.searching = 'Searching...'
     $scope.data = yelper.getYelpEntry().then(function(response) {
+      $scope.searching = "Why don't you try this?";
       $scope.data = response;
+      $scope.image = images[Math.floor(Math.random() * images.length)];
+      console.log($scope.image);
       return;
     }, function errorCallback(response) {
       return response;
