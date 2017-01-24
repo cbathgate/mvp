@@ -71,9 +71,31 @@ angular.module('foodapp', ['ngRoute'])
         url: '/api/places/',
         data: place
       });
-    }
+    };
+
+    var getAll = function () {
+      console.log('getting to getAll');
+      var headers = {
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'access-control-allow-headers': 'content-type, accept',
+        'access-control-max-age': 10 // Seconds.
+      };
+      return $http({
+        method: 'GET',
+        url: '/api/places/',
+        headers: headers
+      })
+      .then(function (resp) {
+        return resp.data;
+      });
+    };
+
     return {
-      addOne: addOne
+      addOne: addOne,
+      getAll: getAll
     }
   })
 
@@ -86,7 +108,9 @@ angular.module('foodapp', ['ngRoute'])
 
   .controller('foodCtrl', function($scope, yelper, $http, place) {
     var images = ['one', 'two', 'three', 'four', 'five', 'six'];
-    $scope.searching = 'Searching...'
+    
+    $scope.searching = 'Searching...';
+
     $scope.data = yelper.getYelpEntry().then(function(response) {
       $scope.searching = "Why don't you try this?";
       $scope.data = response;
@@ -94,7 +118,6 @@ angular.module('foodapp', ['ngRoute'])
 
       var newEntry = {
         name: $scope.data.name,
-        address: $scope.formatted_address
       }
       place.addOne(newEntry)
       .then(function (){
@@ -114,5 +137,12 @@ angular.module('foodapp', ['ngRoute'])
         return response;
       });
     };
+    var recents = function () {
+      console.log('this happend');
+      place.getAll().then(function(places) {
+        $scope.places = places;
+      });
+    };
+    recents();
   });
 

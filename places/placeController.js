@@ -3,11 +3,12 @@ var Place = require('./placeModel.js');
 
 // Promisify a few mongoose methods with the `q` promise library
 var createPlace = Q.nbind(Place.create, Place);
-var findAllplaces = Q.nbind(Place.find, Place);
+var findAllPlaces = Q.nbind(Place.find, Place);
 
 module.exports = {
 
   allPlaces: function (req, res, next) {
+    ('im trying to find all the places');
     findAllPlaces({})
       .then(function (places) {
         res.json(places);
@@ -23,7 +24,6 @@ module.exports = {
     var address = req.body.address;
     var newPlace = {
       name: name,
-      address: address
     };
     createPlace(newPlace)
     .then(function (createdPlace) {
