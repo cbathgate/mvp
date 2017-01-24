@@ -2,7 +2,7 @@
   <div class='hungry'>Hungry?</div>
   <div class = 'subtext'>Our food genies are ready to work! Simply enter your location and click the button below to find food near you!</div>
   <form name="foodForm" ng-submit=''>
-    <input type='text' name='location' class='place' value='Enter your location'>
-    <input class='button' ng-click='' type='submit' value='Gimme Food!'>
+    <input type='text' ng-model='place' name='location' class='place' value='Enter your location'>
+  <a href= '#/food' class='button' ng-click='clicked()'>Gimme Food!</a>
   </form>
 </div>
