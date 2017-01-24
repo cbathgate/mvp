@@ -17,6 +17,8 @@ angular.module('foodapp', ['ngRoute'])
 
     $httpProvider.defaults.useXDomain = true;
     $httpProvider.defaults.headers.common = 'Content-Type: application/json';
+    $httpProvider.defaults.headers.common = 'Access-Control-Allow-Origin: *';
+    $httpProvider.defaults.headers.common = 'Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT';
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
   })
 
@@ -35,9 +37,10 @@ angular.module('foodapp', ['ngRoute'])
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'access-control-allow-headers': 'content-type, accept',
+        'access-control-max-age': 10 // Seconds.
       };
-      console.log(GOOGLE_API_KEY);
       var url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurant+in+' + useLocation + '&radius=400&key='+ GOOGLE_API_KEY
       return $http({
         method: "GET",
@@ -59,6 +62,21 @@ angular.module('foodapp', ['ngRoute'])
     }
   })
 
+  //factory for database functions
+  .factory('place', function($http) {
+    var addOne = function(place) {
+      console.log('about to add a new entry from the factory')
+      return $http({
+        method: 'POST',
+        url: '/api/places/',
+        data: place
+      });
+    }
+    return {
+      addOne: addOne
+    }
+  })
+
   //build all controllers here
   .controller('welcomeCtrl', function($scope, yelper) {
     $scope.clicked = function () {
@@ -66,23 +84,30 @@ angular.module('foodapp', ['ngRoute'])
     }
   })
 
-  .controller('foodCtrl', function($scope, yelper, $http) {
+  .controller('foodCtrl', function($scope, yelper, $http, place) {
     var images = ['one', 'two', 'three', 'four', 'five', 'six'];
     $scope.searching = 'Searching...'
     $scope.data = yelper.getYelpEntry().then(function(response) {
       $scope.searching = "Why don't you try this?";
       $scope.data = response;
-      console.log($scope.data);
       $scope.image = images[Math.floor(Math.random() * images.length)];
-      return;
+
+      var newEntry = {
+        name: $scope.data.name,
+        address: $scope.formatted_address
+      }
+      place.addOne(newEntry)
+      .then(function (){
+        return; 
+      })
     }, function errorCallback(response) {
       return response;
     });
     $scope.clicked = function () {
+      $scope.searching = 'Searching...'
       $scope.data = yelper.getYelpEntry().then(function(response) {
         $scope.searching = "Why don't you try this?";
         $scope.data = response;
-        console.log($scope.data);
         $scope.image = images[Math.floor(Math.random() * images.length)];
         return;
       }, function errorCallback(response) {
