@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html ng-app='findMeFood'>
+<html ng-app='foodapp'>
   <head> 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>findMeFood</title>
-    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Maven+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
   </head>
   <body>
-    <h1>findMeFood</h1>
-
-    <!-- switch views from start to food-->
+    <nav>
+      <span class='logo'>findMeFood</span>
+    </nav>
+    
     <div ng-view></div>
 
-    <!-- angular specified -->
-    <!-- <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-route/angular-route.js"></script> -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
 
-    <!-- insert pages here -->
+    <script src="app/app.js"></script>
   </body>
 </html>
